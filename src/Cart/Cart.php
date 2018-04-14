@@ -23,8 +23,11 @@ class Cart
     
     public function removeProduct(Product $productToRemove)
     {
-        if (($key = array_search($productToRemove, $this->cartList, true)) !== false) {
-            unset($this->cartList[$key]);
+        foreach ($this->cartList as $item) {
+            $index = array_search($item, $this->getItems());
+            if ($item->getProduct() == $productToRemove) {
+                unset($this->cartList[$index]);
+            }
         }
     }
     
@@ -44,8 +47,13 @@ class Cart
     
     public function setQuantity(Product $product, $quantity)
     {
-        $index = array_search($product, $this->cartList);
-        return $this;
+        foreach ($this->cartList as $item) {
+            $index = array_search($item, $this->getItems());
+            if ($item->getProduct() == $product) {
+                $item->setQuantity($quantity);
+            }
+            return $this;
+        }
     }
 
     public function getTotalPrice()

@@ -12,21 +12,23 @@ function nl($linebreak = 1){
 }
         $product = new Product();
         $product
-            ->setId(1)
-            ->setUnitPrice(1);
+            ->setId(22)
+            ->setUnitPrice(22);
 
         $product2 = new Product();
-        $product2->setUnitPrice(2);
+        $product2->setId(1);
+        $product2->setUnitPrice(1);
         $cart = new Cart();
         $cart->addProduct($product, 1);
         $cart->addProduct($product2, 1);
-        
-        $cart->removeProduct($product);
+        echo '<pre>', print_r($cart), '</pre>';
+      
+        print_r($cart->getItem(0));
         
         nl(4);
         //var_dump($product);
         nl(4);
-        var_dump($cart->getItem(0)->getProduct());
+        //var_dump($cart->getItem(0)->getProduct());
         nl(4);
         echo '<pre>', print_r($cart), '</pre>';
         nl(2);

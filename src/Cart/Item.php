@@ -48,4 +48,8 @@ class Item
         $this->quantity = $quantity;
         return $this;
     }
+    public function appendQuantity($quantity)
+    {
+        $this->quantity = $this->quantity + $quantity;
+    }
 }
