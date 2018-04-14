@@ -4,7 +4,7 @@
  *
  * @author hubert
  */
-declare(strict_types = 1);
+
 namespace Gwo\Recruitment\Entity;
 
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
@@ -15,31 +15,6 @@ class Product
     private $productName;
     private $unitPrice;
     private $minimumQuantity = 1;
-    
-            /*OldWay
-        if($minimumQuantity <= 0){
-            throw new InvalidArgumentException('Ilość nie może być mniejsza od 1');
-        }
-        if($UnitPrice <= 0){
-            throw new InvalidArgumentException('Cena nie może być mniejsza niż 1 grosz');
-        }
-        $this->productName = $productName;
-        $this->UnitPrice = $UnitPrice;
-        $this->minimumQuantity = $minimumQuantity;
-           if($minimumQuantity <= 0){
-            throw new InvalidArgumentException('Ilość nie może być mniejsza od 1');
-        }
-        if($UnitPrice <= 0){
-            throw new InvalidArgumentException('Cena nie może być mniejsza niż 1 grosz');
-             *              */
-    public function __construct()
-    {
-    }
-    
-    public function __toString()
-    {
-        return $this->getUnitPrice();
-    }
        
     public function getId()
     {
@@ -69,8 +44,7 @@ class Product
     
     public function setMinimumQuantity($minimumQuantity)
     {
-        if ($minimumQuantity <= 0)
-        {
+        if ($minimumQuantity <= 0) {
             throw new InvalidArgumentException("Invalid minimum quality");
         }
         $this->minimumQuantity = $minimumQuantity;
@@ -85,8 +59,7 @@ class Product
 
     public function setUnitPrice($unitPrice)
     {
-        if ($unitPrice <= 0)
-        {
+        if ($unitPrice <= 0) {
             throw new InvalidArgumentException("Invalid minimum price");
         }
         $this->unitPrice = $unitPrice;

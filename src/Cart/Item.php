@@ -17,9 +17,7 @@ class Item
 
     public function __construct(Product $product, int $quantity)
     {
-        
-        if ($quantity < $product->getMinimumQuantity())
-        {
+        if ($quantity < $product -> getMinimumQuantity()) {
             throw new QuantityTooLowException("Zamówiono mniej produktu niż wymagano: ".$product->getMinimumQuantity());
         }
         
@@ -44,9 +42,8 @@ class Item
     
     public function setQuantity($quantity)
     {
-        if ($quantity < $this->product->getMinimumQuantity())
-        {
-            throw new QuantityTooLowException("Zamówiono mniej produktu niż wymagano: ".$this->product->getMinimumQuantity());
+        if ($quantity < $this->product->getMinimumQuantity()) {
+            throw new QuantityTooLowException("MinimumQuntity Error".$this->product->getMinimumQuantity());
         }
         $this->quantity = $quantity;
         return $this;

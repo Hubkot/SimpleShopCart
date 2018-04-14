@@ -21,20 +21,18 @@ class Cart
         return $this;
     }
     
-    //Poprawić funkcję
     public function removeProduct(Product $productToRemove)
     {
-        $index = array_search($productToRemove, $this->cartList);
-        var_dump($index);
+        if (($key = array_search($productToRemove, $this->cartList, true)) !== false) {
+            unset($this->cartList[$key]);
+        }
     }
     
     public function getItem(int $index)
     {
-        if ($this->cartList[$index] == null)
-        {
+        if ($this->cartList[$index] == null) {
               throw new OutOfBoundsException("Brak takiego produktu w koszyku");
-        }else
-        {
+        } else {
             return $this->cartList[$index];
         }
     }
@@ -51,10 +49,9 @@ class Cart
     }
 
     public function getTotalPrice()
-    {        
+    {
         $total = 0;
-        foreach($this->cartList as $item)
-        {
+        foreach ($this->cartList as $item) {
             $total = $total + $item->getTotalPrice();
         }
         return $total;

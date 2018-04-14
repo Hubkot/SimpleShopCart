@@ -21,9 +21,10 @@ function nl($linebreak = 1){
         $cart->addProduct($product, 1);
         $cart->addProduct($product2, 1);
         
+        $cart->removeProduct($product);
         
         nl(4);
-        var_dump($product);
+        //var_dump($product);
         nl(4);
         var_dump($cart->getItem(0)->getProduct());
         nl(4);
