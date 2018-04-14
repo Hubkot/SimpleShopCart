@@ -14,12 +14,12 @@ class Item {
     
     private $product;
     private $quantity;
-    
-    function __construct(Product $product, int $quantity) {
+
+    public function __construct(Product $product, int $quantity) {
         
         if($quantity < $product->getMinimumQuantity())
         {
-            throw new QuantityTooLowException("Nie można zamówić mniejszej ilości produktu niż : ".$product->getMinimumQuantity());
+            throw new QuantityTooLowException("Zamówiono mniej produktu niż wymagano: ".$product->getMinimumQuantity());
         }
         
         $this->product = $product;
@@ -27,17 +27,22 @@ class Item {
         
     }
     
-    function getTotalPrice()
+    public function getTotalPrice()
     {
         return $this->product->getUnitPrice() * $this->quantity;
     }
     
-    function getProduct() {
+    public function getProduct() {
         return $this->product;
     }
 
-    function getQuantity() {
+    public function getQuantity() {
         return $this->quantity;
+    }
+    
+    public function setQuantity($quantity) {
+        $this->quantity = $quantity;
+        return $this;
     }
 
 

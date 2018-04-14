@@ -12,12 +12,10 @@ use SebastianBergmann\RecursionContext\InvalidArgumentException;
 class Product {
     private $id;
     private $productName;
-    private $UnitPrice;
-    private $minimumQuantity;
+    private $unitPrice;
+    private $minimumQuantity = 1;
     
-            
-    function __construct(string $productName, int $UnitPrice, int $minimumQuantity = 1) {
-        
+            /*OldWay
         if($minimumQuantity <= 0){
             throw new InvalidArgumentException('Ilość nie może być mniejsza od 1');
         }
@@ -28,44 +26,56 @@ class Product {
         $this->productName = $productName;
         $this->UnitPrice = $UnitPrice;
         $this->minimumQuantity = $minimumQuantity;
-    }
-    function getId() {
+           if($minimumQuantity <= 0){
+            throw new InvalidArgumentException('Ilość nie może być mniejsza od 1');
+        }
+        if($UnitPrice <= 0){
+            throw new InvalidArgumentException('Cena nie może być mniejsza niż 1 grosz');
+             *              */
+    public function __construct() {}
+       
+    public function getId() {
         return $this->id;
     }
 
-    function setId($id) {
-        $this->id = $id;
-    }
-
-    function getProductName() {
+    public function getProductName() {
         return $this->productName;
     }
 
-    function getUnitPrice() {
-        return $this->UnitPrice;
+    public function getUnitPrice() {
+        return $this->unitPrice;
     }
 
-    function getMinimumQuantity() {
+    public function getMinimumQuantity() {
         return $this->minimumQuantity;
     }
 
-    function setMinimumQuantity($minimumQuantity) {
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+    
+    public function setMinimumQuantity($minimumQuantity) {
         $this->minimumQuantity = $minimumQuantity;
+        return $this;
     }
     
-    function setProductName($productName) {
+    public function setProductName($productName) {
         $this->productName = $productName;
+        return $this;
     }
 
-    function setUnitPrice($UnitPrice) {
-        $this->UnitPrice = $UnitPrice;
+    public function setUnitPrice($unitPrice) {
+        $this->unitPrice = $unitPrice;
+        return $this;
     }
 
+
+
     
     
 
 
- 
+ }
     
 
-}

@@ -11,21 +11,15 @@ function nl($linebreak = 1){
     }
 }
 
-$makaron = new Product("Makaron",12.1231541);
-$makaron->setId(1);
-echo $makaron->getProductName();
-echo '<br/>';
-echo $makaron->getUnitPrice();
-nl();
-echo $makaron->getMinimumQuantity();
-nl(3);
-$drink = new Product("RedBull", 2500,3);
-$drink->setId(3);
+$makaron = new Product();
+$makaron->setId(1)->setUnitPrice(100);
+$drink = new Product();
+$drink->setId(12);
+$drink->setUnitPrice(1222);
+var_dump($makaron);
+nl(2);
+var_dump($drink);
 
-
-
-print_r($makaron);
-echo '<br/><br/><br/><br/><br/><br/><br/><br/>';
 $sc = new Cart();
 $sc->addProduct($makaron, 12);
 $sc->addProduct($drink, 4);
@@ -35,7 +29,7 @@ nl(3);
 echo '<pre>', print_r($sc->getItems()),'</pre>';
 
 
-var_dump($sc->getItem(2));
+var_dump($sc->getTotalPrice());
 
 
 

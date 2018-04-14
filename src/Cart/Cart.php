@@ -14,18 +14,19 @@ class Cart {
     
     private $cartList = [];
     
-    function addProduct(Product $product, int $quantity)
+    public function addProduct(Product $product, int $quantity)
     {
         $this->cartList[] = new Item($product, $quantity);
+        return $this;
     }
     //Poprawić funkcję
-    function removeProduct(Product $productToRemove)
+    public function removeProduct(Product $productToRemove)
     {
         $index = array_search($productToRemove, $this->cartList);
         var_dump($index);
     }
     
-    function getItem(int $index)
+    public function getItem(int $index)
     {
         if($this->cartList[$index] == null){
               throw new OutOfBoundsException("Brak takiego produktu w koszyku");
@@ -33,12 +34,27 @@ class Cart {
         else{return $this->cartList[$index];}
     }
     
-    function getItems()
+    public function getItems()
     {
         return $this->cartList;
     }
+    
+    public function setQuantity(Product $product, $quantity)
+    {
+        $index = array_search($product, $this->cartList);
+        return $this;
+    }
 
-    
-    
+    public function getTotalPrice(){
+        $total = 0;
+        foreach($this->cartList as $key=>$p)
+        {
+            echo'To jest $key: ',$key,'<br />';
+            var_dump($p->getTotalPrice);
+            echo '<br/><br/><br/><br/><br/><br/><br/>';
+        
+        }
+    } 
+   
  
 }
