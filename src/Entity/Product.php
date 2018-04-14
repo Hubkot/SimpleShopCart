@@ -35,6 +35,11 @@ class Product
     public function __construct()
     {
     }
+    
+    public function __toString()
+    {
+        return $this->getUnitPrice();
+    }
        
     public function getId()
     {
@@ -64,6 +69,10 @@ class Product
     
     public function setMinimumQuantity($minimumQuantity)
     {
+        if ($minimumQuantity <= 0)
+        {
+            throw new InvalidArgumentException("Invalid minimum quality");
+        }
         $this->minimumQuantity = $minimumQuantity;
         return $this;
     }
@@ -76,6 +85,10 @@ class Product
 
     public function setUnitPrice($unitPrice)
     {
+        if ($unitPrice <= 0)
+        {
+            throw new InvalidArgumentException("Invalid minimum price");
+        }
         $this->unitPrice = $unitPrice;
         return $this;
     }

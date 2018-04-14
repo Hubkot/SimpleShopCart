@@ -44,6 +44,10 @@ class Item
     
     public function setQuantity($quantity)
     {
+        if ($quantity < $this->product->getMinimumQuantity())
+        {
+            throw new QuantityTooLowException("Zamówiono mniej produktu niż wymagano: ".$this->product->getMinimumQuantity());
+        }
         $this->quantity = $quantity;
         return $this;
     }
