@@ -27,11 +27,6 @@ $sc->addProduct($makaron, 12);
 nl(3);
 
 echo '<pre>', print_r($sc->getItems()),'</pre>';
-
-
-var_dump($sc->getTotalPrice());
-
-
-
+echo '<pre>', print_r($sc->getItem(2)),'</pre>';
 ?>
 

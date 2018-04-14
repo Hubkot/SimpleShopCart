@@ -9,22 +9,22 @@ namespace Gwo\Recruitment\Cart;
 use Gwo\Recruitment\Cart\Exception\QuantityTooLowException;
 use Gwo\Recruitment\Entity\Product;
 
-
-class Item {
+class Item
+{
     
     private $product;
     private $quantity;
 
-    public function __construct(Product $product, int $quantity) {
+    public function __construct(Product $product, int $quantity)
+    {
         
-        if($quantity < $product->getMinimumQuantity())
+        if ($quantity < $product->getMinimumQuantity())
         {
             throw new QuantityTooLowException("Zamówiono mniej produktu niż wymagano: ".$product->getMinimumQuantity());
         }
         
         $this->product = $product;
         $this->quantity  = $quantity;
-        
     }
     
     public function getTotalPrice()
@@ -32,20 +32,19 @@ class Item {
         return $this->product->getUnitPrice() * $this->quantity;
     }
     
-    public function getProduct() {
+    public function getProduct()
+    {
         return $this->product;
     }
 
-    public function getQuantity() {
+    public function getQuantity()
+    {
         return $this->quantity;
     }
     
-    public function setQuantity($quantity) {
+    public function setQuantity($quantity)
+    {
         $this->quantity = $quantity;
         return $this;
     }
-
-
-    
-
 }

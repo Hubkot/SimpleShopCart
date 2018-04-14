@@ -9,7 +9,8 @@ namespace Gwo\Recruitment\Entity;
 
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
-class Product {
+class Product
+{
     private $id;
     private $productName;
     private $unitPrice;
@@ -22,7 +23,6 @@ class Product {
         if($UnitPrice <= 0){
             throw new InvalidArgumentException('Cena nie może być mniejsza niż 1 grosz');
         }
-        
         $this->productName = $productName;
         $this->UnitPrice = $UnitPrice;
         $this->minimumQuantity = $minimumQuantity;
@@ -32,50 +32,51 @@ class Product {
         if($UnitPrice <= 0){
             throw new InvalidArgumentException('Cena nie może być mniejsza niż 1 grosz');
              *              */
-    public function __construct() {}
+    public function __construct()
+    {
+    }
        
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getProductName() {
+    public function getProductName()
+    {
         return $this->productName;
     }
 
-    public function getUnitPrice() {
+    public function getUnitPrice()
+    {
         return $this->unitPrice;
     }
 
-    public function getMinimumQuantity() {
+    public function getMinimumQuantity()
+    {
         return $this->minimumQuantity;
     }
 
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
         return $this;
     }
     
-    public function setMinimumQuantity($minimumQuantity) {
+    public function setMinimumQuantity($minimumQuantity)
+    {
         $this->minimumQuantity = $minimumQuantity;
         return $this;
     }
     
-    public function setProductName($productName) {
+    public function setProductName($productName)
+    {
         $this->productName = $productName;
         return $this;
     }
 
-    public function setUnitPrice($unitPrice) {
+    public function setUnitPrice($unitPrice)
+    {
         $this->unitPrice = $unitPrice;
         return $this;
     }
-
-
-
-    
-    
-
-
- }
-    
-
+}
