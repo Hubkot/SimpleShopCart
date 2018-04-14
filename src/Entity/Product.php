@@ -5,7 +5,7 @@
  * @author hubert
  */
 declare(strict_types = 1);
-namespace Gwo\Recruitment\Entity\Product;
+namespace Gwo\Recruitment\Entity;
 
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
@@ -16,14 +16,17 @@ class Product {
     private $minimumQuantity;
     
             
-    function __construct(string $productName, int $productPrice, int $minimumQuantity = 1) {
+    function __construct(string $productName, int $UnitPrice, int $minimumQuantity = 1) {
         
         if($minimumQuantity <= 0){
             throw new InvalidArgumentException('Ilość nie może być mniejsza od 1');
         }
+        if($UnitPrice <= 0){
+            throw new InvalidArgumentException('Cena nie może być mniejsza niż 1 grosz');
+        }
         
         $this->productName = $productName;
-        $this->UnitPrice = $productPrice;
+        $this->UnitPrice = $UnitPrice;
         $this->minimumQuantity = $minimumQuantity;
     }
     function getId() {

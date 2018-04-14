@@ -4,24 +4,43 @@
  *
  * @author hubert
  */
-namespace Gwo\Recruitment\Cart\Item;
+namespace Gwo\Recruitment\Cart;
 
-use Gwo\Recruitment\Entity\Product\Product;
+use Gwo\Recruitment\Cart\Exception\QuantityTooLowException;
+use Gwo\Recruitment\Entity\Product;
+
 
 class Item {
     
-    private $productId;
+    private $product;
     private $quantity;
-    private $totalPrice;
     
     function __construct(Product $product, int $quantity) {
-        $this->productId = $product->getId();
+        
+        if($quantity < $product->getMinimumQuantity())
+        {
+            throw new QuantityTooLowException("Nie można zamówić mniejszej ilości produktu niż : ".$product->getMinimumQuantity());
+        }
+        
+        $this->product = $product;
         $this->quantity  = $quantity;
+        
     }
     
     function getTotalPrice()
     {
-        
+        return $this->product->getUnitPrice() * $this->quantity;
     }
+    
+    function getProduct() {
+        return $this->product;
+    }
+
+    function getQuantity() {
+        return $this->quantity;
+    }
+
+
+    
 
 }
