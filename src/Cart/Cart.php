@@ -10,8 +10,6 @@ use Gwo\Recruitment\Cart\Item;
 use Gwo\Recruitment\Entity\Product;
 use OutOfBoundsException;
 
-
-
 class Cart {
     
     private $cartList = [];
@@ -20,7 +18,7 @@ class Cart {
     {
         $this->cartList[] = new Item($product, $quantity);
     }
-    
+    //Poprawić funkcję
     function removeProduct(Product $productToRemove)
     {
         $index = array_search($productToRemove, $this->cartList);
@@ -29,13 +27,15 @@ class Cart {
     
     function getItem(int $index)
     {
-        if(array_search($index, $this->cartList) !== false)
-            {
-            return $this->cartList[$index];
-            }
-        else{
-            throw new OutOfBoundsException("Brak takiego produktu w koszyku");
-        };
+        if($this->cartList[$index] == null){
+              throw new OutOfBoundsException("Brak takiego produktu w koszyku");
+        }
+        else{return $this->cartList[$index];}
+    }
+    
+    function getItems()
+    {
+        return $this->cartList;
     }
 
     
