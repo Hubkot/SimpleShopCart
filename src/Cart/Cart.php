@@ -23,6 +23,7 @@ class Cart
     
     public function removeProduct(Product $productToRemove)
     {
+    //TODO: Do poprawienia - nie powinienem szukać przez foreacha
         foreach ($this->cartList as $item) {
             $index = array_search($item, $this->getItems());
             if ($item->getProduct() == $productToRemove) {
@@ -33,7 +34,7 @@ class Cart
     
     public function getItem(int $index)
     {
-        if ($this->cartList[$index] == null) {
+        if ($this->cartList[$index]) {
               throw new OutOfBoundsException("Brak takiego produktu w koszyku");
         } else {
             return $this->cartList[$index];
