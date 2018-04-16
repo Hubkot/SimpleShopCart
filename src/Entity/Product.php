@@ -15,7 +15,7 @@ class Product
     private $productName;
     private $unitPrice;
     private $minimumQuantity = 1;
-       
+   
     public function getId()
     {
         return $this->id;
